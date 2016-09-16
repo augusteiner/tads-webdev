@@ -21,10 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev.ex;
+package io.tads.webdev.exercicios;
 
 import io.tads.webdev.AgendaEletronica;
 import io.tads.webdev.Contato;
+import io.tads.webdev.Endereco;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -51,13 +52,20 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     public void exibirContato(Contato contato) {
 
-        System.out.println(contato.getNome());
+        System.out.println(String.format(
+            "~ %s\n  %s",
+
+            contato,
+            contato.getEndereco()));
 
     }
 
     private void run() {
 
-        this.controlador.adicionar(new Contato("José", "Nascimento", 30));
+        Endereco enderecoJose = new Endereco("R. dos Programadores", "30", "Candelária");
+        Contato jose = new Contato("José", "Nascimento", 30, enderecoJose);
+
+        this.controlador.adicionar(jose);
 
         this.exibirContatos();
 

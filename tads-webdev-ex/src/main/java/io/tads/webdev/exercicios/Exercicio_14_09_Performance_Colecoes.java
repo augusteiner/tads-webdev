@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev.ex;
+package io.tads.webdev.exercicios;
 
 import static io.tads.webdev.TesteBuscaElementosEmColecao.novoTeste;
 
