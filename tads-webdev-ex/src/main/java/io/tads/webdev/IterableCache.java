@@ -36,12 +36,6 @@ public class IterableCache<E> implements Iterable<E> {
     private Collection<E> cache;
     private Iterator<E> iter;
 
-    public IterableCache() {
-
-        this(Collections.emptyList());
-
-    }
-
     public IterableCache(Iterable<E> iterable) {
 
         this.iter = iterable.iterator();
