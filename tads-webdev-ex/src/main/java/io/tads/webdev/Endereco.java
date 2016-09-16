@@ -32,6 +32,14 @@ public class Endereco {
     private String numero;
     private String bairro;
 
+    public Endereco(String logradouro, String numero, String bairro) {
+
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+
+    }
+
     public String getLogradouro() {
 
         return this.logradouro;
@@ -60,6 +68,18 @@ public class Endereco {
     public void setBairro(String bairro) {
 
         this.bairro = bairro;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format(
+            "%s, %s - %s",
+
+            this.getLogradouro(),
+            this.getNumero(),
+            this.getBairro());
+
     }
 
 }
