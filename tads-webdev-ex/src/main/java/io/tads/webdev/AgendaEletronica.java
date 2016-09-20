@@ -24,11 +24,12 @@
 package io.tads.webdev;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class AgendaEletronica {
+public class AgendaEletronica implements Iterable<Contato> {
 
     private Agenda agenda;
 
@@ -45,20 +46,37 @@ public class AgendaEletronica {
 
     public void adicionar(Contato contato) {
 
-        this.agenda.getContatos().add(contato);
+        this.getAgenda().adicionar(contato);
 
     }
 
-    public Contato excluir(String nome) {
+    public Iterable<Contato> buscar(String termo) {
 
-        return null;
+        return this.getAgenda().buscar(termo);
 
     }
 
     public Iterable<Contato> getContatos() {
 
-        return this.getAgenda().getContatos();
+        return this.getAgenda();
 
+    }
+
+    @Override
+    public Iterator<Contato> iterator() {
+
+        return this.getAgenda().iterator();
+    }
+
+    public ContatoBuilder contatoBuilder() {
+
+        return new ContatoBuilder();
+
+    }
+
+    public EnderecoBuilder enderecoBuilder() {
+
+        return new EnderecoBuilder();
     }
 
 }

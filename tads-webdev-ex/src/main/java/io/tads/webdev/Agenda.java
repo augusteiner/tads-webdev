@@ -24,23 +24,51 @@
 package io.tads.webdev;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Agenda {
+public class Agenda implements Iterable<Contato> {
 
     private Collection<Contato> contatos;
 
     public Agenda(Collection<Contato> contatos) {
 
+        if (contatos == null) {
+
+            throw new IllegalArgumentException(
+                "Lista de contatos não pode ser nula");
+        }
+
         this.contatos = contatos;
 
     }
 
-    public Collection<Contato> getContatos() {
+    public void adicionar(Contato contato) {
 
-        return this.contatos;
+        this.contatos.add(contato);
+
+    }
+
+    public void excluir(Contato contato) {
+
+        this.contatos.remove(contato);
+
+    }
+
+    @Override
+    public Iterator<Contato> iterator() {
+
+        return this.contatos.iterator();
+    }
+
+    public Iterable<Contato> buscar(String termo) {
+
+        return new ContatosEncontrados(
+            termo,
+            this.contatos);
+
     }
 
 }

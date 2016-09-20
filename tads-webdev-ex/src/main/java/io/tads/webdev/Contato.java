@@ -57,24 +57,9 @@ public class Contato {
 
     }
 
-    public String getNome() {
+    public Endereco getEndereco() {
 
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-
-        return this.sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-
-        this.sobrenome = sobrenome;
+        return this.endereco;
     }
 
     public int getIdade() {
@@ -82,19 +67,42 @@ public class Contato {
         return this.idade;
     }
 
-    public void setIdade(int idade) {
+    public String getNome() {
 
-        this.idade = idade;
+        return this.nome;
     }
 
-    public Endereco getEndereco() {
+    public String getSobrenome() {
 
-        return this.endereco;
+        return this.sobrenome;
+    }
+
+    public boolean matches(String termo) {
+
+        return this.getNome().contains(termo) ||
+            this.getSobrenome().contains(termo) ||
+            this.getEndereco().matches(termo);
+
     }
 
     public void setEndereco(Endereco endereco) {
 
         this.endereco = endereco;
+    }
+
+    public void setIdade(int idade) {
+
+        this.idade = idade;
+    }
+
+    public void setNome(String nome) {
+
+        this.nome = nome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+
+        this.sobrenome = sobrenome;
     }
 
     @Override

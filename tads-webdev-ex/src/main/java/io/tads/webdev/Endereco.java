@@ -40,14 +40,14 @@ public class Endereco {
 
     }
 
+    public String getBairro() {
+
+        return this.bairro;
+    }
+
     public String getLogradouro() {
 
         return this.logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-
-        this.logradouro = logradouro;
     }
 
     public String getNumero() {
@@ -55,19 +55,27 @@ public class Endereco {
         return this.numero;
     }
 
-    public void setNumero(String numero) {
+    public boolean matches(String termo) {
 
-        this.numero = numero;
-    }
+        return this.getLogradouro().contains(termo) ||
+            this.getBairro().contains(termo) ||
+            this.getNumero().contains(termo);
 
-    public String getBairro() {
-
-        return this.bairro;
     }
 
     public void setBairro(String bairro) {
 
         this.bairro = bairro;
+    }
+
+    public void setLogradouro(String logradouro) {
+
+        this.logradouro = logradouro;
+    }
+
+    public void setNumero(String numero) {
+
+        this.numero = numero;
     }
 
     @Override

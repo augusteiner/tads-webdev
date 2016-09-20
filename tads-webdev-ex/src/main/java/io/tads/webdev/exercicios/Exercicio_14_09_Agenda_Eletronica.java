@@ -23,9 +23,12 @@
  */
 package io.tads.webdev.exercicios;
 
+import java.util.Scanner;
+
 import io.tads.webdev.AgendaEletronica;
 import io.tads.webdev.Contato;
-import io.tads.webdev.Endereco;
+import io.tads.webdev.ContatoBuilder;
+import io.tads.webdev.EnderecoBuilder;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -33,16 +36,34 @@ import io.tads.webdev.Endereco;
 public class Exercicio_14_09_Agenda_Eletronica {
 
     private AgendaEletronica controlador;
+    private Scanner scanner;
 
-    public Exercicio_14_09_Agenda_Eletronica() {
+    public Exercicio_14_09_Agenda_Eletronica(Scanner scanner) {
 
-        controlador = new AgendaEletronica();
+        this.controlador = new AgendaEletronica();
+        this.scanner = scanner;
+
+    }
+
+    public void exibirContato(Contato contato) {
+
+        System.out.println(String.format(
+            "> %s\n  %s",
+
+            contato,
+            contato.getEndereco()));
 
     }
 
     public void exibirContatos() {
 
-        for (Contato contato : this.controlador.getContatos()) {
+        exibirContatos(this.controlador.getAgenda());
+
+    }
+
+    public void exibirContatos(Iterable<Contato> contatos) {
+
+        for (Contato contato : contatos) {
 
             this.exibirContato(contato);
 
@@ -50,30 +71,65 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     }
 
-    public void exibirContato(Contato contato) {
+    private ContatoBuilder lerContato(ContatoBuilder builder) {
 
-        System.out.println(String.format(
-            "~ %s\n  %s",
+        System.out.println("~ Novo Contato ~");
 
-            contato,
-            contato.getEndereco()));
+        System.out.print(" Infome o nome: ");
+        builder.setNome(lerString());
+
+        System.out.print(" Infome o sobrenome: ");
+        builder.setSobrenome(lerString());
+
+        builder.setIdade(30);
+
+        return builder;
+    }
+
+    private EnderecoBuilder lerEndereco(EnderecoBuilder builder) {
+
+        builder.setLogradouro("R. dos Programadores");
+
+        builder.setNumero("30");
+
+        builder.setBairro("Candelária");
+
+        return builder;
+
+    }
+
+    private String lerString() {
+
+        return lerString(this.scanner);
+
+    }
+
+    private String lerString(Scanner scanner) {
+
+        return scanner.nextLine();
 
     }
 
     private void run() {
 
-        Endereco enderecoJose = new Endereco("R. dos Programadores", "30", "Candelária");
-        Contato jose = new Contato("José", "Nascimento", 30, enderecoJose);
+        ContatoBuilder contato = lerContato(this.controlador.contatoBuilder());
+        EnderecoBuilder endereco = lerEndereco(this.controlador.enderecoBuilder());
 
-        this.controlador.adicionar(jose);
+        contato.setEndereco(endereco.build());
 
-        this.exibirContatos();
+        this.controlador.adicionar(contato.build());
+
+        this.exibirContatos(this.controlador.buscar("J"));
 
     }
 
     public static void main(String[] args) {
 
-        new Exercicio_14_09_Agenda_Eletronica().run();
+        Scanner scanner = new Scanner(System.in);
+
+        new Exercicio_14_09_Agenda_Eletronica(scanner).run();
+
+        scanner.close();
 
     }
 
