@@ -23,62 +23,72 @@
  */
 package io.tads.webdev;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class IterableCache<E> implements Iterable<E> {
+public class ContatosEncontradosIterator implements Iterator<Contato> {
 
-    private Collection<E> cache;
-    private Iterator<E> iter;
+    private String termo;
+    private Iterator<Contato> iter;
 
-    public IterableCache(Iterable<E> iterable) {
+    private Contato current;
+    private boolean initialized;
 
-        this.iter = iterable.iterator();
-        this.cache = null;
+    public ContatosEncontradosIterator(Iterator<Contato> iter, String termo) {
+
+        this.iter = iter;
+        this.termo = termo;
+
+        this.current = null;
+        this.initialized = false;
 
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public boolean hasNext() {
 
-        if (this.cache == null) {
+        if (!this.initialized) {
 
-            this.cache = new ArrayList<E>();
+            this.initialized = true;
 
-            return new Iterator<E>() {
+            this.findNext();
 
-                private final IterableCache<E> self = IterableCache.this;
+        }
 
-                @Override
-                public boolean hasNext() {
+        return this.current != null;
 
-                    return self.iter.hasNext();
+    }
 
-                }
+    @Override
+    public Contato next() {
 
-                @Override
-                public E next() {
+        Contato current = this.current;
 
-                    E next = self.iter.next();
+        this.findNext();
 
-                    self.cache.add(next);
+        return current;
 
-                    return next;
+    }
 
-                }
+    protected void findNext() {
 
-            };
+        this.current = null;
 
-        } else {
+        while (this.iter.hasNext()) {
 
-            return this.cache.iterator();
+            Contato current = this.iter.next();
+
+            if (current.matches(this.termo)) {
+
+                this.current = current;
+
+                break;
+
+            }
 
         }
 
     }
-
 }

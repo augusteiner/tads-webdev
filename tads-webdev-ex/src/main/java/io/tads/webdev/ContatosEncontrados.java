@@ -23,61 +23,31 @@
  */
 package io.tads.webdev;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class IterableCache<E> implements Iterable<E> {
+public class ContatosEncontrados implements Iterable<Contato> {
 
-    private Collection<E> cache;
-    private Iterator<E> iter;
+    private String termo;
+    private Iterable<Contato> iter;
 
-    public IterableCache(Iterable<E> iterable) {
+    public ContatosEncontrados(
+        String termo,
+        Iterable<Contato> contatos) {
 
-        this.iter = iterable.iterator();
-        this.cache = null;
+        this.termo = termo;
+        this.iter = contatos;
 
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public Iterator<Contato> iterator() {
 
-        if (this.cache == null) {
-
-            this.cache = new ArrayList<E>();
-
-            return new Iterator<E>() {
-
-                private final IterableCache<E> self = IterableCache.this;
-
-                @Override
-                public boolean hasNext() {
-
-                    return self.iter.hasNext();
-
-                }
-
-                @Override
-                public E next() {
-
-                    E next = self.iter.next();
-
-                    self.cache.add(next);
-
-                    return next;
-
-                }
-
-            };
-
-        } else {
-
-            return this.cache.iterator();
-
-        }
+        return new ContatosEncontradosIterator(
+            this.iter.iterator(),
+            this.termo);
 
     }
 

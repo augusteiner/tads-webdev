@@ -23,61 +23,33 @@
  */
 package io.tads.webdev;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class IterableCache<E> implements Iterable<E> {
+public class EnderecoBuilder {
 
-    private Collection<E> cache;
-    private Iterator<E> iter;
+    private String logradouro;
+    private String numero;
+    private String bairro;
 
-    public IterableCache(Iterable<E> iterable) {
+    public void setLogradouro(String logradouro) {
 
-        this.iter = iterable.iterator();
-        this.cache = null;
-
+        this.logradouro = logradouro;
     }
 
-    @Override
-    public Iterator<E> iterator() {
+    public void setNumero(String numero) {
 
-        if (this.cache == null) {
+        this.numero = numero;
+    }
 
-            this.cache = new ArrayList<E>();
+    public void setBairro(String bairro) {
 
-            return new Iterator<E>() {
+        this.bairro = bairro;
+    }
 
-                private final IterableCache<E> self = IterableCache.this;
+    public Endereco build() {
 
-                @Override
-                public boolean hasNext() {
-
-                    return self.iter.hasNext();
-
-                }
-
-                @Override
-                public E next() {
-
-                    E next = self.iter.next();
-
-                    self.cache.add(next);
-
-                    return next;
-
-                }
-
-            };
-
-        } else {
-
-            return this.cache.iterator();
-
-        }
+        return new Endereco(logradouro, numero, bairro);
 
     }
 
