@@ -29,11 +29,11 @@ import java.util.Iterator;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Agenda implements Iterable<Contato> {
+public class Agenda implements Iterable<Pessoa> {
 
-    private Collection<Contato> contatos;
+    private Collection<Pessoa> contatos;
 
-    public Agenda(Collection<Contato> contatos) {
+    public Agenda(Collection<Pessoa> contatos) {
 
         if (contatos == null) {
 
@@ -45,25 +45,25 @@ public class Agenda implements Iterable<Contato> {
 
     }
 
-    public void adicionar(Contato contato) {
+    public void adicionar(Pessoa contato) {
 
         this.contatos.add(contato);
 
     }
 
-    public void excluir(Contato contato) {
+    public void excluir(Pessoa contato) {
 
         this.contatos.remove(contato);
 
     }
 
     @Override
-    public Iterator<Contato> iterator() {
+    public Iterator<Pessoa> iterator() {
 
         return this.contatos.iterator();
     }
 
-    public Iterable<Contato> buscar(String termo) {
+    public Iterable<Pessoa> buscar(String termo) {
 
         return new ContatosEncontrados(
             termo,

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 José Augusto
+ * Copyright (c) 2016 José Nascimento <joseaugustodearaujonascimento@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,72 +23,42 @@
  */
 package io.tads.webdev;
 
-import java.util.Iterator;
-
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ *
  */
-public class ContatosEncontradosIterator implements Iterator<Pessoa> {
+public class PessoaJuridica extends Pessoa {
 
-    private String termo;
-    private Iterator<Pessoa> iter;
+	private String cnpj;
 
-    private Pessoa current;
-    private boolean initialized;
+	public PessoaJuridica() {
 
-    public ContatosEncontradosIterator(Iterator<Pessoa> iter, String termo) {
+		super(ETipoPessoa.JURIDICA);
 
-        this.iter = iter;
-        this.termo = termo;
+	}
 
-        this.current = null;
-        this.initialized = false;
+	public PessoaJuridica(String nome, String sobrenome, int idade) {
+
+    	super(ETipoPessoa.JURIDICA, nome, sobrenome, idade);
 
     }
 
-    @Override
-    public boolean hasNext() {
+	public PessoaJuridica(String nome, String sobrenome, int idade, Endereco endereco) {
 
-        if (!this.initialized) {
-
-            this.initialized = true;
-
-            this.findNext();
-
-        }
-
-        return this.current != null;
+    	super(ETipoPessoa.JURIDICA, nome, sobrenome, idade, endereco);
 
     }
 
-    @Override
-    public Pessoa next() {
+    public String getCnpj() {
 
-        Pessoa current = this.current;
+		return this.cnpj;
 
-        this.findNext();
+	}
 
-        return current;
+    public void setCnpj(String cnpj) {
 
-    }
+		this.cnpj = cnpj;
 
-    protected void findNext() {
+	}
 
-        this.current = null;
-
-        while (this.iter.hasNext()) {
-
-            Pessoa current = this.iter.next();
-
-            if (current.matches(this.termo)) {
-
-                this.current = current;
-
-                break;
-
-            }
-
-        }
-
-    }
 }

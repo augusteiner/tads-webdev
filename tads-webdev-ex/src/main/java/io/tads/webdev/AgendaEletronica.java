@@ -29,13 +29,13 @@ import java.util.Iterator;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class AgendaEletronica implements Iterable<Contato> {
+public class AgendaEletronica implements Iterable<Pessoa> {
 
     private Agenda agenda;
 
     public AgendaEletronica() {
 
-        this.agenda = new Agenda(new ArrayList<Contato>());
+        this.agenda = new Agenda(new ArrayList<Pessoa>());
 
     }
 
@@ -44,33 +44,33 @@ public class AgendaEletronica implements Iterable<Contato> {
         return this.agenda;
     }
 
-    public void adicionar(Contato contato) {
+    public void adicionar(Pessoa contato) {
 
         this.getAgenda().adicionar(contato);
 
     }
 
-    public Iterable<Contato> buscar(String termo) {
+    public Iterable<Pessoa> buscar(String termo) {
 
         return this.getAgenda().buscar(termo);
 
     }
 
-    public Iterable<Contato> getContatos() {
+    public Iterable<Pessoa> getContatos() {
 
         return this.getAgenda();
 
     }
 
     @Override
-    public Iterator<Contato> iterator() {
+    public Iterator<Pessoa> iterator() {
 
         return this.getAgenda().iterator();
     }
 
-    public ContatoBuilder contatoBuilder() {
+    public PessoaBuilder contatoBuilder() {
 
-        return new ContatoBuilder();
+        return new PessoaBuilder();
 
     }
 

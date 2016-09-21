@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 José Augusto
+ * Copyright (c) 2016 José Nascimento <joseaugustodearaujonascimento@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,39 +25,12 @@ package io.tads.webdev;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ *
  */
-public class ContatoBuilder {
+public enum ETipoPessoa {
 
-    private String nome;
-    private String sobrenome;
-    private int idade;
-    private Endereco endereco;
+	FISICA,
 
-    public void setNome(String nome) {
-
-        this.nome = nome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-
-        this.sobrenome = sobrenome;
-    }
-
-    public void setIdade(int idade) {
-
-        this.idade = idade;
-    }
-
-    public void setEndereco(Endereco endereco) {
-
-        this.endereco = endereco;
-
-    }
-
-    public Contato build() {
-
-        return new Contato(nome, sobrenome, idade, endereco);
-
-    }
+	JURIDICA;
 
 }

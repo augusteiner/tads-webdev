@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 José Augusto
+ * Copyright (c) 2016 José Nascimento <joseaugustodearaujonascimento@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,72 +23,54 @@
  */
 package io.tads.webdev;
 
-import java.util.Iterator;
-
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class ContatosEncontradosIterator implements Iterator<Pessoa> {
+public class PessoaBuilder {
 
-    private String termo;
-    private Iterator<Pessoa> iter;
+    private String nome;
+    private String sobrenome;
+    private int idade;
+    private Endereco endereco;
+    private ETipoPessoa tipo;
 
-    private Pessoa current;
-    private boolean initialized;
 
-    public ContatosEncontradosIterator(Iterator<Pessoa> iter, String termo) {
+    public void setNome(String nome) {
 
-        this.iter = iter;
-        this.termo = termo;
+        this.nome = nome;
+    }
 
-        this.current = null;
-        this.initialized = false;
+    public void setSobrenome(String sobrenome) {
+
+        this.sobrenome = sobrenome;
+    }
+
+    public void setIdade(int idade) {
+
+        this.idade = idade;
+    }
+
+    public void setEndereco(Endereco endereco) {
+
+        this.endereco = endereco;
 
     }
 
-    @Override
-    public boolean hasNext() {
+    public Pessoa build() {
 
-        if (!this.initialized) {
+    	switch (this.tipo) {
 
-            this.initialized = true;
+	    	case FISICA:
+	    		return new PessoaFisica(nome, sobrenome, idade, endereco);
 
-            this.findNext();
+	    	case JURIDICA:
+	    		return new PessoaJuridica(nome, sobrenome, idade, endereco);
 
-        }
+    		default:
+    			throw new IllegalStateException();
 
-        return this.current != null;
-
-    }
-
-    @Override
-    public Pessoa next() {
-
-        Pessoa current = this.current;
-
-        this.findNext();
-
-        return current;
+    	}
 
     }
 
-    protected void findNext() {
-
-        this.current = null;
-
-        while (this.iter.hasNext()) {
-
-            Pessoa current = this.iter.next();
-
-            if (current.matches(this.termo)) {
-
-                this.current = current;
-
-                break;
-
-            }
-
-        }
-
-    }
 }

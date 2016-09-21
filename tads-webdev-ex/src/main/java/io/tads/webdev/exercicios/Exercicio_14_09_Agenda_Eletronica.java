@@ -26,8 +26,8 @@ package io.tads.webdev.exercicios;
 import java.util.Scanner;
 
 import io.tads.webdev.AgendaEletronica;
-import io.tads.webdev.Contato;
-import io.tads.webdev.ContatoBuilder;
+import io.tads.webdev.Pessoa;
+import io.tads.webdev.PessoaBuilder;
 import io.tads.webdev.EnderecoBuilder;
 
 /**
@@ -71,7 +71,7 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     }
 
-    public void exibirContato(Contato contato) {
+    public void exibirContato(Pessoa contato) {
 
         println(String.format(
             "> %s\n  %s",
@@ -87,9 +87,9 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     }
 
-    public void exibirContatos(Iterable<Contato> contatos) {
+    public void exibirContatos(Iterable<Pessoa> contatos) {
 
-        for (Contato contato : contatos) {
+        for (Pessoa contato : contatos) {
 
             this.exibirContato(contato);
 
@@ -97,7 +97,7 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     }
 
-    private ContatoBuilder lerContato(ContatoBuilder builder) {
+    private PessoaBuilder lerContato(PessoaBuilder builder) {
 
         println("~ Novo Contato ~");
 
@@ -143,7 +143,7 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
         final AgendaEletronica ctrlr = this.ctrlr;
 
-        ContatoBuilder contato = lerContato(ctrlr.contatoBuilder());
+        PessoaBuilder contato = lerContato(ctrlr.contatoBuilder());
         EnderecoBuilder endereco = lerEndereco(ctrlr.enderecoBuilder());
 
         contato.setEndereco(endereco.build());

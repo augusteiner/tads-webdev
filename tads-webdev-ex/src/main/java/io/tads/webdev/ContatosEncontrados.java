@@ -28,14 +28,14 @@ import java.util.Iterator;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class ContatosEncontrados implements Iterable<Contato> {
+public class ContatosEncontrados implements Iterable<Pessoa> {
 
     private String termo;
-    private Iterable<Contato> iter;
+    private Iterable<Pessoa> iter;
 
     public ContatosEncontrados(
         String termo,
-        Iterable<Contato> contatos) {
+        Iterable<Pessoa> contatos) {
 
         this.termo = termo;
         this.iter = contatos;
@@ -43,7 +43,7 @@ public class ContatosEncontrados implements Iterable<Contato> {
     }
 
     @Override
-    public Iterator<Contato> iterator() {
+    public Iterator<Pessoa> iterator() {
 
         return new ContatosEncontradosIterator(
             this.iter.iterator(),

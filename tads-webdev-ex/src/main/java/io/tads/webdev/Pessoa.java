@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 José Augusto
+ * Copyright (c) 2016 José Nascimento <joseaugustodearaujonascimento@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,22 +26,26 @@ package io.tads.webdev;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Contato {
+public abstract class Pessoa {
 
     private String nome;
-    private String sobrenome;
 
+	private String sobrenome;
     private int idade;
 
+    private final ETipoPessoa tipo;
     private Endereco endereco;
 
-    public Contato() {
+    protected Pessoa(ETipoPessoa tipo) {
 
-        //
+        this.tipo = tipo;
 
     }
 
-    public Contato(String nome, String sobrenome, int idade) {
+
+    protected Pessoa(ETipoPessoa tipo, String nome, String sobrenome, int idade) {
+
+    	this(tipo);
 
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -49,9 +53,9 @@ public class Contato {
 
     }
 
-    public Contato(String nome, String sobrenome, int idade, Endereco endereco) {
+    protected Pessoa(ETipoPessoa tipo, String nome, String sobrenome, int idade, Endereco endereco) {
 
-        this(nome, sobrenome, idade);
+        this(tipo, nome, sobrenome, idade);
 
         this.endereco = endereco;
 
@@ -62,7 +66,7 @@ public class Contato {
         return this.endereco;
     }
 
-    public int getIdade() {
+	public int getIdade() {
 
         return this.idade;
     }
@@ -77,7 +81,12 @@ public class Contato {
         return this.sobrenome;
     }
 
-    public boolean matches(String termo) {
+    public ETipoPessoa getTipo() {
+
+		return this.tipo;
+	}
+
+	public boolean matches(String termo) {
 
         return this.getNome().contains(termo) ||
             this.getSobrenome().contains(termo) ||

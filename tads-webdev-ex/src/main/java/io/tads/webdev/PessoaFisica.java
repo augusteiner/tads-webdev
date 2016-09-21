@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 José Augusto
+ * Copyright (c) 2016 José Nascimento <joseaugustodearaujonascimento@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,72 +23,36 @@
  */
 package io.tads.webdev;
 
-import java.util.Iterator;
-
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ *
  */
-public class ContatosEncontradosIterator implements Iterator<Pessoa> {
+public class PessoaFisica extends Pessoa {
 
-    private String termo;
-    private Iterator<Pessoa> iter;
+	private String cpf;
 
-    private Pessoa current;
-    private boolean initialized;
+	public PessoaFisica() {
 
-    public ContatosEncontradosIterator(Iterator<Pessoa> iter, String termo) {
+		super(ETipoPessoa.FISICA);
 
-        this.iter = iter;
-        this.termo = termo;
+	}
 
-        this.current = null;
-        this.initialized = false;
+	public PessoaFisica(String nome, String sobrenome, int idade, Endereco endereco) {
 
-    }
+		super(ETipoPessoa.FISICA, nome, sobrenome, idade, endereco);
 
-    @Override
-    public boolean hasNext() {
+	}
 
-        if (!this.initialized) {
+	public String getCpf() {
 
-            this.initialized = true;
+		return this.cpf;
 
-            this.findNext();
+	}
 
-        }
+	public void setCpf(String cpf) {
 
-        return this.current != null;
+		this.cpf = cpf;
 
-    }
+	}
 
-    @Override
-    public Pessoa next() {
-
-        Pessoa current = this.current;
-
-        this.findNext();
-
-        return current;
-
-    }
-
-    protected void findNext() {
-
-        this.current = null;
-
-        while (this.iter.hasNext()) {
-
-            Pessoa current = this.iter.next();
-
-            if (current.matches(this.termo)) {
-
-                this.current = current;
-
-                break;
-
-            }
-
-        }
-
-    }
 }
