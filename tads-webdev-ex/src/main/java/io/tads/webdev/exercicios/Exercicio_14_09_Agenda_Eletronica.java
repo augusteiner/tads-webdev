@@ -35,19 +35,45 @@ import io.tads.webdev.EnderecoBuilder;
  */
 public class Exercicio_14_09_Agenda_Eletronica {
 
-    private AgendaEletronica controlador;
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        new Exercicio_14_09_Agenda_Eletronica(scanner).run();
+
+        scanner.close();
+
+    }
+    private static void print(String format, Object... args) {
+
+        System.out.println(String.format(
+            format,
+            args));
+
+    }
+
+    private static void println(String format, Object... args) {
+
+        print(format, args);
+
+        System.out.println();
+
+    }
+
+    private AgendaEletronica ctrlr;
+
     private Scanner scanner;
 
     public Exercicio_14_09_Agenda_Eletronica(Scanner scanner) {
 
-        this.controlador = new AgendaEletronica();
+        this.ctrlr = new AgendaEletronica();
         this.scanner = scanner;
 
     }
 
     public void exibirContato(Contato contato) {
 
-        System.out.println(String.format(
+        println(String.format(
             "> %s\n  %s",
 
             contato,
@@ -57,7 +83,7 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     public void exibirContatos() {
 
-        exibirContatos(this.controlador.getAgenda());
+        exibirContatos(this.ctrlr.getAgenda());
 
     }
 
@@ -73,12 +99,12 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     private ContatoBuilder lerContato(ContatoBuilder builder) {
 
-        System.out.println("~ Novo Contato ~");
+        println("~ Novo Contato ~");
 
-        System.out.print(" Infome o nome: ");
+        print(" Infome o nome: ");
         builder.setNome(lerString());
 
-        System.out.print(" Infome o sobrenome: ");
+        print(" Infome o sobrenome: ");
         builder.setSobrenome(lerString());
 
         builder.setIdade(30);
@@ -88,11 +114,14 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     private EnderecoBuilder lerEndereco(EnderecoBuilder builder) {
 
-        builder.setLogradouro("R. dos Programadores");
+        print("Informe o logradouro: ");
+        builder.setLogradouro(lerString());
 
-        builder.setNumero("30");
+        print("Informe o número: ");
+        builder.setNumero(lerString());
 
-        builder.setBairro("Candelária");
+        print("Informe o bairro: ");
+        builder.setBairro(lerString());
 
         return builder;
 
@@ -112,24 +141,16 @@ public class Exercicio_14_09_Agenda_Eletronica {
 
     private void run() {
 
-        ContatoBuilder contato = lerContato(this.controlador.contatoBuilder());
-        EnderecoBuilder endereco = lerEndereco(this.controlador.enderecoBuilder());
+        final AgendaEletronica ctrlr = this.ctrlr;
+
+        ContatoBuilder contato = lerContato(ctrlr.contatoBuilder());
+        EnderecoBuilder endereco = lerEndereco(ctrlr.enderecoBuilder());
 
         contato.setEndereco(endereco.build());
 
-        this.controlador.adicionar(contato.build());
+        ctrlr.adicionar(contato.build());
 
-        this.exibirContatos(this.controlador.buscar("J"));
-
-    }
-
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-
-        new Exercicio_14_09_Agenda_Eletronica(scanner).run();
-
-        scanner.close();
+        this.exibirContatos(ctrlr.buscar("J"));
 
     }
 
