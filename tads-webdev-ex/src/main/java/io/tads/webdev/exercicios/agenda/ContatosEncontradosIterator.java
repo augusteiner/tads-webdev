@@ -21,64 +21,74 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class IterableCache<E> implements Iterable<E> {
+public class ContatosEncontradosIterator implements Iterator<Pessoa> {
 
-    private Collection<E> cache;
-    private Iterator<E> iter;
+    private String termo;
+    private Iterator<Pessoa> iter;
 
-    public IterableCache(Iterable<E> iterable) {
+    private Pessoa current;
+    private boolean initialized;
 
-        this.iter = iterable.iterator();
-        this.cache = null;
+    public ContatosEncontradosIterator(Iterator<Pessoa> iter, String termo) {
+
+        this.iter = iter;
+        this.termo = termo;
+
+        this.current = null;
+        this.initialized = false;
 
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public boolean hasNext() {
 
-        if (this.cache == null) {
+        if (!this.initialized) {
 
-            this.cache = new ArrayList<E>();
+            this.initialized = true;
 
-            return new Iterator<E>() {
+            this.findNext();
 
-                private final IterableCache<E> self = IterableCache.this;
+        }
 
-                @Override
-                public boolean hasNext() {
+        return this.current != null;
 
-                    return self.iter.hasNext();
+    }
 
-                }
+    @Override
+    public Pessoa next() {
 
-                @Override
-                public E next() {
+        Pessoa current = this.current;
 
-                    E next = self.iter.next();
+        this.findNext();
 
-                    self.cache.add(next);
+        return current;
 
-                    return next;
+    }
 
-                }
+    protected void findNext() {
 
-            };
+        this.current = null;
 
-        } else {
+        while (this.iter.hasNext()) {
 
-            return this.cache.iterator();
+            Pessoa current = this.iter.next();
+
+            if (current.matches(this.termo)) {
+
+                this.current = current;
+
+                break;
+
+            }
 
         }
 
     }
-
 }

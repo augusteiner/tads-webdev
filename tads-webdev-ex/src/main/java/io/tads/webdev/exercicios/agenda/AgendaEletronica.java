@@ -21,58 +21,62 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class TesteBuscaElementosEmColecao<E> {
+public class AgendaEletronica implements Iterable<Pessoa> {
 
-    private final Collection<E> colecao;
-    private final Iterable<E> elementos;
+    private Agenda agenda;
 
-    public TesteBuscaElementosEmColecao(
-        Collection<E> colecao,
-        Iterable<E> elementos) {
+    public AgendaEletronica() {
 
-        this.colecao = colecao;
-        this.elementos = elementos;
+        this.agenda = new Agenda(new ArrayList<Pessoa>());
 
     }
 
-    public void executar() {
+    public Agenda getAgenda() {
 
-        buscarNaColecao();
+        return this.agenda;
+    }
+
+    public void adicionar(Pessoa contato) {
+
+        this.getAgenda().adicionar(contato);
 
     }
 
-    public void buscarNaColecao() {
+    public Iterable<Pessoa> buscar(String termo) {
 
-        long t0 = System.currentTimeMillis();
-
-        for (E elemento : elementos) {
-
-            colecao.contains(elemento);
-
-        }
-
-        long tf = System.currentTimeMillis();
-
-        System.out.println(String.format(
-            "Tempo gasto na busca: %d (ms)",
-
-            tf - t0));
+        return this.getAgenda().buscar(termo);
 
     }
 
-    public static <E> TesteBuscaElementosEmColecao<E> novoTeste(
-        Collection<E> colecao,
-        Iterable<E> elementos) {
+    public Iterable<Pessoa> getContatos() {
 
-        return new TesteBuscaElementosEmColecao<E>(colecao, elementos);
+        return this.getAgenda();
 
+    }
+
+    @Override
+    public Iterator<Pessoa> iterator() {
+
+        return this.getAgenda().iterator();
+    }
+
+    public PessoaBuilder contatoBuilder() {
+
+        return new PessoaBuilder();
+
+    }
+
+    public EnderecoBuilder enderecoBuilder() {
+
+        return new EnderecoBuilder();
     }
 
 }

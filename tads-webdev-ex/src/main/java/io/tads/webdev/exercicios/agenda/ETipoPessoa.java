@@ -21,74 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
-
-import java.util.Iterator;
+package io.tads.webdev.exercicios.agenda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ *
  */
-public class ContatosEncontradosIterator implements Iterator<Pessoa> {
+public enum ETipoPessoa {
 
-    private String termo;
-    private Iterator<Pessoa> iter;
+	FISICA,
 
-    private Pessoa current;
-    private boolean initialized;
+	JURIDICA;
 
-    public ContatosEncontradosIterator(Iterator<Pessoa> iter, String termo) {
-
-        this.iter = iter;
-        this.termo = termo;
-
-        this.current = null;
-        this.initialized = false;
-
-    }
-
-    @Override
-    public boolean hasNext() {
-
-        if (!this.initialized) {
-
-            this.initialized = true;
-
-            this.findNext();
-
-        }
-
-        return this.current != null;
-
-    }
-
-    @Override
-    public Pessoa next() {
-
-        Pessoa current = this.current;
-
-        this.findNext();
-
-        return current;
-
-    }
-
-    protected void findNext() {
-
-        this.current = null;
-
-        while (this.iter.hasNext()) {
-
-            Pessoa current = this.iter.next();
-
-            if (current.matches(this.termo)) {
-
-                this.current = current;
-
-                break;
-
-            }
-
-        }
-
-    }
 }

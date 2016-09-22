@@ -21,57 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
-
-import java.util.Iterator;
-import java.util.Random;
+package io.tads.webdev.exercicios.colecoes;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class InteirosAleatorios implements Iterable<Integer> {
+public class InteirosAleatoriosEmIntervalo extends InteirosAleatorios {
 
-    private final int length;
+    private final int max;
+    private final int min;
 
-    private int index;
-    protected final Random random;
+    public InteirosAleatoriosEmIntervalo(int length, int max, int min) {
 
-    public InteirosAleatorios(int length) {
+        super(length);
 
-        this.length = length;
-        this.random = new Random();
+        this.min = min;
+        this.max = max;
 
     }
 
     @Override
-    public Iterator<Integer> iterator() {
-
-        final InteirosAleatorios self = this;
-
-        return new Iterator<Integer>() {
-
-            @Override
-            public boolean hasNext() {
-
-                return self.index < self.length;
-            }
-
-            @Override
-            public Integer next() {
-
-                self.index++;
-
-                return self.nextInt();
-
-            }
-
-        };
-
-    }
-
     protected int nextInt() {
 
-        return this.random.nextInt();
+        return this.random.nextInt((this.max - this.min) + 1) + min;
 
     }
 

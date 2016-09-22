@@ -21,72 +21,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.colecoes;
+
+import java.util.Collection;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Endereco {
+public class TesteBuscaElementosEmColecao<E> {
 
-    private String logradouro;
-    private String numero;
-    private String bairro;
+    private final Collection<E> colecao;
+    private final Iterable<E> elementos;
 
-    public Endereco(String logradouro, String numero, String bairro) {
+    public TesteBuscaElementosEmColecao(
+        Collection<E> colecao,
+        Iterable<E> elementos) {
 
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-
-    }
-
-    public String getBairro() {
-
-        return this.bairro;
-    }
-
-    public String getLogradouro() {
-
-        return this.logradouro;
-    }
-
-    public String getNumero() {
-
-        return this.numero;
-    }
-
-    public boolean matches(String termo) {
-
-        return this.getLogradouro().contains(termo) ||
-            this.getBairro().contains(termo) ||
-            this.getNumero().contains(termo);
+        this.colecao = colecao;
+        this.elementos = elementos;
 
     }
 
-    public void setBairro(String bairro) {
+    public void executar() {
 
-        this.bairro = bairro;
+        buscarNaColecao();
+
     }
 
-    public void setLogradouro(String logradouro) {
+    public void buscarNaColecao() {
 
-        this.logradouro = logradouro;
+        long t0 = System.currentTimeMillis();
+
+        for (E elemento : elementos) {
+
+            colecao.contains(elemento);
+
+        }
+
+        long tf = System.currentTimeMillis();
+
+        System.out.println(String.format(
+            "Tempo gasto na busca: %d (ms)",
+
+            tf - t0));
+
     }
 
-    public void setNumero(String numero) {
+    public static <E> TesteBuscaElementosEmColecao<E> novoTeste(
+        Collection<E> colecao,
+        Iterable<E> elementos) {
 
-        this.numero = numero;
-    }
-
-    @Override
-    public String toString() {
-
-        return String.format(
-            "%s, %s - %s",
-
-            this.getLogradouro(),
-            this.getNumero(),
-            this.getBairro());
+        return new TesteBuscaElementosEmColecao<E>(colecao, elementos);
 
     }
 

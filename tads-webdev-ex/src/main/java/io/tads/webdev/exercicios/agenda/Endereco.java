@@ -21,38 +21,73 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
- *
  */
-public class PessoaFisica extends Pessoa {
+public class Endereco {
 
-	private String cpf;
+    private String logradouro;
+    private String numero;
+    private String bairro;
 
-	public PessoaFisica() {
+    public Endereco(String logradouro, String numero, String bairro) {
 
-		super(ETipoPessoa.FISICA);
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
 
-	}
+    }
 
-	public PessoaFisica(String nome, String sobrenome, int idade, Endereco endereco) {
+    public String getBairro() {
 
-		super(ETipoPessoa.FISICA, nome, sobrenome, idade, endereco);
+        return this.bairro;
+    }
 
-	}
+    public String getLogradouro() {
 
-	public String getCpf() {
+        return this.logradouro;
+    }
 
-		return this.cpf;
+    public String getNumero() {
 
-	}
+        return this.numero;
+    }
 
-	public void setCpf(String cpf) {
+    public boolean matches(String termo) {
 
-		this.cpf = cpf;
+        return this.getLogradouro().contains(termo) ||
+            this.getBairro().contains(termo) ||
+            this.getNumero().contains(termo);
 
-	}
+    }
+
+    public void setBairro(String bairro) {
+
+        this.bairro = bairro;
+    }
+
+    public void setLogradouro(String logradouro) {
+
+        this.logradouro = logradouro;
+    }
+
+    public void setNumero(String numero) {
+
+        this.numero = numero;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format(
+            "%s, %s - %s",
+
+            this.getLogradouro(),
+            this.getNumero(),
+            this.getBairro());
+
+    }
 
 }

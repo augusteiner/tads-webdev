@@ -21,36 +21,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ *
  */
-public class EnderecoBuilder {
+public class PessoaJuridica extends Pessoa {
 
-    private String logradouro;
-    private String numero;
-    private String bairro;
+	private String cnpj;
 
-    public void setLogradouro(String logradouro) {
+	public PessoaJuridica() {
 
-        this.logradouro = logradouro;
-    }
+		super(ETipoPessoa.JURIDICA);
 
-    public void setNumero(String numero) {
+	}
 
-        this.numero = numero;
-    }
+	public PessoaJuridica(String nome, String sobrenome, int idade) {
 
-    public void setBairro(String bairro) {
-
-        this.bairro = bairro;
-    }
-
-    public Endereco build() {
-
-        return new Endereco(logradouro, numero, bairro);
+    	super(ETipoPessoa.JURIDICA, nome, sobrenome, idade);
 
     }
+
+	public PessoaJuridica(String nome, String sobrenome, int idade, Endereco endereco) {
+
+    	super(ETipoPessoa.JURIDICA, nome, sobrenome, idade, endereco);
+
+    }
+
+    public String getCnpj() {
+
+		return this.cnpj;
+
+	}
+
+    public void setCnpj(String cnpj) {
+
+		this.cnpj = cnpj;
+
+	}
 
 }

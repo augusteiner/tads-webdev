@@ -25,10 +25,10 @@ package io.tads.webdev.exercicios;
 
 import java.util.Scanner;
 
-import io.tads.webdev.AgendaEletronica;
-import io.tads.webdev.Pessoa;
-import io.tads.webdev.PessoaBuilder;
-import io.tads.webdev.EnderecoBuilder;
+import io.tads.webdev.exercicios.agenda.AgendaEletronica;
+import io.tads.webdev.exercicios.agenda.EnderecoBuilder;
+import io.tads.webdev.exercicios.agenda.Pessoa;
+import io.tads.webdev.exercicios.agenda.PessoaBuilder;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

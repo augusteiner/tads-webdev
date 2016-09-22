@@ -21,33 +21,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.colecoes;
 
 import java.util.Iterator;
+import java.util.Random;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class ContatosEncontrados implements Iterable<Pessoa> {
+public class InteirosAleatorios implements Iterable<Integer> {
 
-    private String termo;
-    private Iterable<Pessoa> iter;
+    private final int length;
 
-    public ContatosEncontrados(
-        String termo,
-        Iterable<Pessoa> contatos) {
+    private int index;
+    protected final Random random;
 
-        this.termo = termo;
-        this.iter = contatos;
+    public InteirosAleatorios(int length) {
+
+        this.length = length;
+        this.random = new Random();
 
     }
 
     @Override
-    public Iterator<Pessoa> iterator() {
+    public Iterator<Integer> iterator() {
 
-        return new ContatosEncontradosIterator(
-            this.iter.iterator(),
-            this.termo);
+        final InteirosAleatorios self = this;
+
+        return new Iterator<Integer>() {
+
+            @Override
+            public boolean hasNext() {
+
+                return self.index < self.length;
+            }
+
+            @Override
+            public Integer next() {
+
+                self.index++;
+
+                return self.nextInt();
+
+            }
+
+        };
+
+    }
+
+    protected int nextInt() {
+
+        return this.random.nextInt();
 
     }
 

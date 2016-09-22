@@ -21,55 +21,54 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
+
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class PessoaBuilder {
+public class Agenda implements Iterable<Pessoa> {
 
-    private String nome;
-    private String sobrenome;
-    private int idade;
-    private Endereco endereco;
-    private ETipoPessoa tipo;
+    private Collection<Pessoa> contatos;
 
+    public Agenda(Collection<Pessoa> contatos) {
 
-    public void setNome(String nome) {
+        if (contatos == null) {
 
-        this.nome = nome;
-    }
+            throw new IllegalArgumentException(
+                "Lista de contatos não pode ser nula");
+        }
 
-    public void setSobrenome(String sobrenome) {
-
-        this.sobrenome = sobrenome;
-    }
-
-    public void setIdade(int idade) {
-
-        this.idade = idade;
-    }
-
-    public void setEndereco(Endereco endereco) {
-
-        this.endereco = endereco;
+        this.contatos = contatos;
 
     }
 
-    public Pessoa build() {
+    public void adicionar(Pessoa contato) {
 
-    	switch (this.tipo) {
+        this.contatos.add(contato);
 
-	    	case FISICA:
-	    		return new PessoaFisica(nome, sobrenome, idade, endereco);
+    }
 
-	    	case JURIDICA:
-	    		return new PessoaJuridica(nome, sobrenome, idade, endereco);
+    public void excluir(Pessoa contato) {
 
-    		default:
-    			throw new IllegalStateException();
+        this.contatos.remove(contato);
 
-    	}
+    }
+
+    @Override
+    public Iterator<Pessoa> iterator() {
+
+        return this.contatos.iterator();
+
+    }
+
+    public Iterable<Pessoa> buscar(String termo) {
+
+        return new ContatosEncontrados(
+            termo,
+            this.contatos);
 
     }
 

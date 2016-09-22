@@ -21,44 +21,64 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.colecoes;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
- *
  */
-public class PessoaJuridica extends Pessoa {
+public class IterableCache<E> implements Iterable<E> {
 
-	private String cnpj;
+    private Collection<E> cache;
+    private Iterator<E> iter;
 
-	public PessoaJuridica() {
+    public IterableCache(Iterable<E> iterable) {
 
-		super(ETipoPessoa.JURIDICA);
-
-	}
-
-	public PessoaJuridica(String nome, String sobrenome, int idade) {
-
-    	super(ETipoPessoa.JURIDICA, nome, sobrenome, idade);
+        this.iter = iterable.iterator();
+        this.cache = null;
 
     }
 
-	public PessoaJuridica(String nome, String sobrenome, int idade, Endereco endereco) {
+    @Override
+    public Iterator<E> iterator() {
 
-    	super(ETipoPessoa.JURIDICA, nome, sobrenome, idade, endereco);
+        if (this.cache == null) {
+
+            this.cache = new ArrayList<E>();
+
+            return new Iterator<E>() {
+
+                private final IterableCache<E> self = IterableCache.this;
+
+                @Override
+                public boolean hasNext() {
+
+                    return self.iter.hasNext();
+
+                }
+
+                @Override
+                public E next() {
+
+                    E next = self.iter.next();
+
+                    self.cache.add(next);
+
+                    return next;
+
+                }
+
+            };
+
+        } else {
+
+            return this.cache.iterator();
+
+        }
 
     }
-
-    public String getCnpj() {
-
-		return this.cnpj;
-
-	}
-
-    public void setCnpj(String cnpj) {
-
-		this.cnpj = cnpj;
-
-	}
 
 }

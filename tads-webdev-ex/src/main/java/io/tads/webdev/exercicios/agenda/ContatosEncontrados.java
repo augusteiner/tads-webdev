@@ -21,16 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
+
+import java.util.Iterator;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
- *
  */
-public enum ETipoPessoa {
+public class ContatosEncontrados implements Iterable<Pessoa> {
 
-	FISICA,
+    private String termo;
+    private Iterable<Pessoa> iter;
 
-	JURIDICA;
+    public ContatosEncontrados(
+        String termo,
+        Iterable<Pessoa> contatos) {
+
+        this.termo = termo;
+        this.iter = contatos;
+
+    }
+
+    @Override
+    public Iterator<Pessoa> iterator() {
+
+        return new ContatosEncontradosIterator(
+            this.iter.iterator(),
+            this.termo);
+
+    }
 
 }

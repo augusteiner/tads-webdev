@@ -21,30 +21,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
+package io.tads.webdev.exercicios.agenda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ *
  */
-public class InteirosAleatoriosEmIntervalo extends InteirosAleatorios {
+public class PessoaFisica extends Pessoa {
 
-    private final int max;
-    private final int min;
+	private String cpf;
 
-    public InteirosAleatoriosEmIntervalo(int length, int max, int min) {
+	public PessoaFisica() {
 
-        super(length);
+		super(ETipoPessoa.FISICA);
 
-        this.min = min;
-        this.max = max;
+	}
 
-    }
+	public PessoaFisica(String nome, String sobrenome, int idade, Endereco endereco) {
 
-    @Override
-    protected int nextInt() {
+		super(ETipoPessoa.FISICA, nome, sobrenome, idade, endereco);
 
-        return this.random.nextInt((this.max - this.min) + 1) + min;
+	}
 
-    }
+	public String getCpf() {
+
+		return this.cpf;
+
+	}
+
+	public void setCpf(String cpf) {
+
+		this.cpf = cpf;
+
+	}
 
 }

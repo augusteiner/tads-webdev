@@ -20,6 +20,7 @@ public class EncodingFilter implements Filter {
         request.setCharacterEncoding(encoding);
 
         filterChain.doFilter(request, response);
+
     }
 
     @Override
@@ -31,7 +32,9 @@ public class EncodingFilter implements Filter {
         if (encodingParam != null) {
 
             encoding = encodingParam;
+
         }
+
     }
 
     @Override

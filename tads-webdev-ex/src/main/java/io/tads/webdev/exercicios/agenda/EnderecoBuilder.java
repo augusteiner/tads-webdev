@@ -21,53 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
-
-import java.util.Collection;
-import java.util.Iterator;
+package io.tads.webdev.exercicios.agenda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Agenda implements Iterable<Pessoa> {
+public class EnderecoBuilder {
 
-    private Collection<Pessoa> contatos;
+    private String logradouro;
+    private String numero;
+    private String bairro;
 
-    public Agenda(Collection<Pessoa> contatos) {
+    public void setLogradouro(String logradouro) {
 
-        if (contatos == null) {
-
-            throw new IllegalArgumentException(
-                "Lista de contatos não pode ser nula");
-        }
-
-        this.contatos = contatos;
-
+        this.logradouro = logradouro;
     }
 
-    public void adicionar(Pessoa contato) {
+    public void setNumero(String numero) {
 
-        this.contatos.add(contato);
-
+        this.numero = numero;
     }
 
-    public void excluir(Pessoa contato) {
+    public void setBairro(String bairro) {
 
-        this.contatos.remove(contato);
-
+        this.bairro = bairro;
     }
 
-    @Override
-    public Iterator<Pessoa> iterator() {
+    public Endereco build() {
 
-        return this.contatos.iterator();
-    }
-
-    public Iterable<Pessoa> buscar(String termo) {
-
-        return new ContatosEncontrados(
-            termo,
-            this.contatos);
+        return new Endereco(logradouro, numero, bairro);
 
     }
 

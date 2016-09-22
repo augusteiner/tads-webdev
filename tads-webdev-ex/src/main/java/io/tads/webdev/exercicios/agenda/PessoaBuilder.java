@@ -21,62 +21,56 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.tads.webdev;
-
-import java.util.ArrayList;
-import java.util.Iterator;
+package io.tads.webdev.exercicios.agenda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class AgendaEletronica implements Iterable<Pessoa> {
+public class PessoaBuilder {
 
-    private Agenda agenda;
+    private String nome;
+    private String sobrenome;
+    private int idade;
+    private Endereco endereco;
+    private ETipoPessoa tipo;
 
-    public AgendaEletronica() {
 
-        this.agenda = new Agenda(new ArrayList<Pessoa>());
+    public void setNome(String nome) {
+
+        this.nome = nome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+
+        this.sobrenome = sobrenome;
+    }
+
+    public void setIdade(int idade) {
+
+        this.idade = idade;
+    }
+
+    public void setEndereco(Endereco endereco) {
+
+        this.endereco = endereco;
 
     }
 
-    public Agenda getAgenda() {
+    public Pessoa build() {
 
-        return this.agenda;
-    }
+    	switch (this.tipo) {
 
-    public void adicionar(Pessoa contato) {
+	    	case FISICA:
+	    		return new PessoaFisica(nome, sobrenome, idade, endereco);
 
-        this.getAgenda().adicionar(contato);
+	    	case JURIDICA:
+	    		return new PessoaJuridica(nome, sobrenome, idade, endereco);
 
-    }
+    		default:
+    			throw new IllegalStateException();
 
-    public Iterable<Pessoa> buscar(String termo) {
+    	}
 
-        return this.getAgenda().buscar(termo);
-
-    }
-
-    public Iterable<Pessoa> getContatos() {
-
-        return this.getAgenda();
-
-    }
-
-    @Override
-    public Iterator<Pessoa> iterator() {
-
-        return this.getAgenda().iterator();
-    }
-
-    public PessoaBuilder contatoBuilder() {
-
-        return new PessoaBuilder();
-
-    }
-
-    public EnderecoBuilder enderecoBuilder() {
-
-        return new EnderecoBuilder();
     }
 
 }

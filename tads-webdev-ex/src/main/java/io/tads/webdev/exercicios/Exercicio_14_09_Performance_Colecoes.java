@@ -23,14 +23,14 @@
  */
 package io.tads.webdev.exercicios;
 
-import static io.tads.webdev.TesteBuscaElementosEmColecao.novoTeste;
+import static io.tads.webdev.exercicios.colecoes.TesteBuscaElementosEmColecao.novoTeste;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import io.tads.webdev.InteirosAleatoriosEmIntervalo;
-import io.tads.webdev.IterableCache;
+import io.tads.webdev.exercicios.colecoes.InteirosAleatoriosEmIntervalo;
+import io.tads.webdev.exercicios.colecoes.IterableCache;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
