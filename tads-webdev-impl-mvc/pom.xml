@@ -8,11 +8,12 @@
     <version>0.1.0-RELEASE</version>
   </parent>
 
-  <groupId>tads.webdev.app1</groupId>
-  <artifactId>tads-webdev-app1</artifactId>
+  <groupId>tads.webdev.impl.mvc</groupId>
+  <artifactId>tads-webdev-impl-mvc</artifactId>
   <version>0.1.0-RELEASE</version>
   <packaging>war</packaging>
-  <name>tads-webdev-app1</name>
+
+  <name>tads-webdev-impl-mvc</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
@@ -30,10 +31,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
-    <finalName>tads-webdev-app1</finalName>
+    <finalName>tads-webdev-impl-mvc</finalName>
     <plugins>
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
@@ -48,4 +50,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>

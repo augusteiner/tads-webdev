@@ -1,0 +1,27 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0" metadata-complete="true">
+
+  <display-name>Web Application with MVC</display-name>
+
+  <servlet>
+
+    <servlet-name>MvcServlet</servlet-name>
+    <servlet-class>tads.webdev.impl.mvc.util.MvcServlet</servlet-class>
+
+    <init-param>
+      <param-name>package</param-name>
+      <param-value>tads.webdev.impl.mvc</param-value>
+    </init-param>
+
+  </servlet>
+
+  <servlet-mapping>
+
+    <servlet-name>MvcServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+
+  </servlet-mapping>
+
+</web-app>
