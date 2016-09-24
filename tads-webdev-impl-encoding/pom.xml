@@ -8,8 +8,8 @@
     <version>0.1.0-RELEASE</version>
   </parent>
 
-  <groupId>tads.webdev.app1</groupId>
-  <artifactId>tads-webdev-app1</artifactId>
+  <groupId>tads.webdev.impl.encoding</groupId>
+  <artifactId>tads-webdev-impl-encoding</artifactId>
   <version>0.1.0-RELEASE</version>
   <packaging>war</packaging>
   <name>tads-webdev-app1</name>

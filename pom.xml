@@ -11,7 +11,7 @@
 
   <modules>
     <module>tads-webdev-ex</module>
-    <module>tads-webdev-app1</module>
+    <module>tads-webdev-impl-encoding</module>
     <module>tads-webdev-impl-hello</module>
     <module>tads-webdev-impl-mvc</module>
   </modules>

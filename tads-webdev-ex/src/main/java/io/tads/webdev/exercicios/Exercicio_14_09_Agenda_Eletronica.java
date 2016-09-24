@@ -44,6 +44,7 @@ public class Exercicio_14_09_Agenda_Eletronica {
         scanner.close();
 
     }
+
     private static void print(String format, Object... args) {
 
         System.out.println(String.format(
