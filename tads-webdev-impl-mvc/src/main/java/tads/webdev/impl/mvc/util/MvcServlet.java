@@ -36,6 +36,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MvcServlet extends HttpServlet {
 
+    private static final int NOT_FOUND = HttpServletResponse.SC_NOT_FOUND;
     private static final String PATH_SEPARATOR = "/";
     private String pkg;
 
@@ -68,9 +69,9 @@ public class MvcServlet extends HttpServlet {
 
             if (pathInfo.length != 3) {
 
-                resp.setStatus(404);
-
-                resp.getOutputStream().print("Path deve ser <Controller>/<Action>");
+                resp.setStatus(NOT_FOUND);
+                resp.getOutputStream().print(
+                    "Path deve ser <Controller>/<Action>");
 
                 return;
 
@@ -92,11 +93,20 @@ public class MvcServlet extends HttpServlet {
 
         } catch (ClassNotFoundException e) {
 
-            throw new ServletException(
-                String.format(
-                    "Controller '%s' não encontrado",
-                    ctrlrName),
-                e);
+            e.printStackTrace();
+
+            resp.setStatus(NOT_FOUND);
+            resp.getOutputStream().print(String.format(
+                "Controller '%s' não encontrado",
+                ctrlrName));
+
+            return;
+
+            //throw new ServletException(
+            //    String.format(
+            //        "Controller '%s' não encontrado",
+            //        ctrlrName),
+            //    e);
 
         }
 
@@ -110,11 +120,20 @@ public class MvcServlet extends HttpServlet {
 
         } catch (Exception e) {
 
-            throw new ServletException(
-                String.format(
-                    "Action '%s' não encontrada",
-                    actionName),
-                e);
+            e.printStackTrace();
+
+            resp.setStatus(NOT_FOUND);
+            resp.getOutputStream().print(String.format(
+                "Action '%s' não encontrada",
+                actionName));
+
+            return;
+
+            //throw new ServletException(
+            //    String.format(
+            //        "Action '%s' não encontrada",
+            //        actionName),
+            //    e);
 
         }
 
@@ -128,7 +147,7 @@ public class MvcServlet extends HttpServlet {
 
             throw new ServletException(
                 String.format(
-                    "Erro ao executar action %s",
+                    "Erro ao executar action '%s'",
                     actionName),
                 e);
 
