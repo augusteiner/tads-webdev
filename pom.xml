@@ -14,6 +14,7 @@
     <module>tads-webdev-impl-hello</module>
     <module>tads-webdev-impl-mvc</module>
     <module>tads-webdev-impl-spring</module>
+    <module>tads-webdev-feign</module>
   </modules>
 
   <properties>
