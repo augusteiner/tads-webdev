@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <artifactId>tads-webdev</artifactId>
     <groupId>io.tads.webdev</groupId>
@@ -11,6 +13,7 @@
   <groupId>tads.webdev.impl.spring</groupId>
   <artifactId>tads-webdev-impl-spring</artifactId>
   <version>0.1.0-RELEASE</version>
+
   <packaging>war</packaging>
 
   <name>tads-webdev-impl-spring</name>
@@ -23,6 +26,7 @@
   </properties>
 
   <dependencies>
+
     <!-- Spring core & mvc -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -73,6 +77,7 @@
       <version>2.1</version>
       <scope>provided</scope>
     </dependency>
+
   </dependencies>
 
   <repositories>
