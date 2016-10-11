@@ -19,6 +19,7 @@
     <module>tads-webdev-impl-mvc</module>
     <module>tads-webdev-impl-spring</module>
     <module>tads-webdev-feign</module>
+    <module>tads-webdev-pratica-servlets</module>
   </modules>
 
   <properties>
