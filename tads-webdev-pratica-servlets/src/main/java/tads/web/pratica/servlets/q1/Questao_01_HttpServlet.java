@@ -38,17 +38,21 @@ public class Questao_01_HttpServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
 
         processarRequisicao(req, resp, Operacao.SOMA);
 
     }
 
-    private void processarRequisicao(
-        HttpServletRequest req,
-        HttpServletResponse resp,
-        Operacao operacao)
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
 
+        processarRequisicao(req, resp, Operacao.SUBTRACAO);
+
+    }
+
+    private void processarRequisicao(HttpServletRequest req, HttpServletResponse resp, Operacao operacao)
         throws IOException, ServletException {
 
         resp.setContentType("text/html");
@@ -74,6 +78,7 @@ public class Questao_01_HttpServlet extends HttpServlet {
                         e.getMessage()));
 
                 return;
+
             }
 
             writer.println(String.format(
@@ -88,28 +93,25 @@ public class Questao_01_HttpServlet extends HttpServlet {
             writer.println("<span>forneça a url no formato ?n1=?&n2=?</span>");
 
         }
+
     }
 
     private double realizarOperacao(double d1, double d2, Operacao operacao)
         throws ServletException {
 
-        switch (operacao)
-        {
+        switch (operacao) {
+
             case SOMA:
                 return d1 + d2;
+
             case SUBTRACAO:
                 return d1 - d2;
+
             default:
-                throw new ServletException("");
+                throw new ServletException(
+                    "Operação não definida para este servlet.");
+
         }
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-        processarRequisicao(req, resp, Operacao.SUBTRACAO);
 
     }
 
