@@ -86,6 +86,24 @@ public final class MemoriaChat {
 
     }
 
+    public SalaChat getSala(long salaId) {
+
+        return this.db.getSala(salaId);
+
+    }
+
+    public Iterable<SalaChat> getSalas() {
+
+        return this.db.getSalas();
+
+    }
+
+    public UsuarioChat getUsuario(UUID usuarioId) {
+
+        return this.db.getUsuario(usuarioId);
+
+    }
+
     public Iterable<UsuarioChat> getUsuarios() {
 
         return this.db.getUsuarios();
@@ -117,12 +135,6 @@ public final class MemoriaChat {
     public Iterable<MensagemChat> recuperarMensagens(long salaId) {
 
         return this.db.getMensagens(salaId);
-
-    }
-
-    public UsuarioChat getUsuario(UUID usuarioId) {
-
-        return this.db.getUsuario(usuarioId);
 
     }
 
