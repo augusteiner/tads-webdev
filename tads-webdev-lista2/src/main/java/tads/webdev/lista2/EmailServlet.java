@@ -42,8 +42,6 @@ import tads.webdev.mail.services.ServicoEmailSendGrid;
 @WebServlet("/email.do")
 public class EmailServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 619558797322068248L;
-
     private IServicoEmail mailService = new ServicoEmailSendGrid();
 
     @Override

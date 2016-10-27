@@ -28,8 +28,6 @@ package tads.webdev.mail;
  */
 public class EnvioEmailException extends Exception {
 
-    private static final long serialVersionUID = -7256624078741742701L;
-
     public EnvioEmailException(String message, Throwable cause) {
 
         super(message, cause);

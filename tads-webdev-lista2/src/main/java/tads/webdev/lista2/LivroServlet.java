@@ -39,8 +39,6 @@ import tads.webdev.Livro;
 @WebServlet(value = "/livro.do")
 public class LivroServlet extends HttpServlet {
 
-    private static final long serialVersionUID = -431677743325293622L;
-
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
