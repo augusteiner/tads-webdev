@@ -138,4 +138,10 @@ public final class MemoriaChat {
 
     }
 
+    public Iterable<MensagemChat> getMensagens(long salaId) {
+
+        return this.db.getMensagens(salaId);
+
+    }
+
 }

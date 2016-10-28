@@ -1,14 +1,14 @@
-<%@ page import="tads.webdev.chat.MemoriaChat"  %>
+<%@ page import="java.util.Collection"  %>
 <%@ page import="tads.webdev.chat.SalaChat"  %>
 
-<%! MemoriaChat memoria = MemoriaChat.instance(); %>
+<% Collection<SalaChat> salas = (Collection<SalaChat>) request.getAttribute("salas"); %>
 
 <fieldset>
   <legend>Escolha a sala de bate-papo</legend>
-<% for (SalaChat sala : memoria.getSalas()) { %>
+<% for (SalaChat sala : salas) { %>
 
   <div>
-    <a href="chat-sala.jsp?salaId=<%= sala.getId() %>">
+    <a href="chat-sala.do?salaId=<%= sala.getId() %>">
       <%= sala.getNome() %></a>
   </div>
 
