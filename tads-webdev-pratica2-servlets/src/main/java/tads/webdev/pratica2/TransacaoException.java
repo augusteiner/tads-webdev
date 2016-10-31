@@ -25,7 +25,6 @@ package tads.webdev.pratica2;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
- *
  */
 public class TransacaoException extends Exception {
 

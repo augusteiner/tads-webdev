@@ -103,7 +103,7 @@ public class MainServlet extends HttpServlet {
     }
 
     private void realizarTransacao(String pOperacao, int qte, Usuario usuario)
-            throws TransacaoException {
+        throws TransacaoException {
 
         if (pOperacao.equals("comprar")) {
 
@@ -116,7 +116,8 @@ public class MainServlet extends HttpServlet {
         } else {
 
             throw new TransacaoException(
-                    "Tipo de transação solicitada não suportada");
+                "Tipo de transação solicitada não suportada");
+
         }
 
     }

@@ -41,6 +41,7 @@ public class FachadaLogin {
         }
 
         return null;
+
     }
 
     public static boolean isUsuarioAutenticado(HttpServletRequest req) {
