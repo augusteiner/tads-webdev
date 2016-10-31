@@ -26,6 +26,7 @@
     <module>tads-webdev-pratica-servlets</module>
     <module>tads-webdev-jsp</module>
     <module>tads-webdev-lista2</module>
+    <module>tads-webdev-pratica2-servlets</module>
   </modules>
 
   <build>
