@@ -17,7 +17,7 @@
 
   <packaging>war</packaging>
 
-  <name>tads-webdev-pratica2-servlets Maven Webapp</name>
+  <name>tads-webdev-pratica2-servlets</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
