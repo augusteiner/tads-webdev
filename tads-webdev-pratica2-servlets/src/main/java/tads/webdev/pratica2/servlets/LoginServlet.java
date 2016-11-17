@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 
         if (FachadaLogin.isUsuarioAutenticado(req)) {
 
-            resp.sendRedirect("/main");
+            resp.sendRedirect("main");
 
             return;
 
@@ -76,10 +76,9 @@ public class LoginServlet extends HttpServlet {
         pSenha = req.getParameter("senha");
 
         if (pLogin == null ||
-            pSenha == null ||
-            FachadaLogin.isUsuarioAutenticado(req)) {
+            pSenha == null) {
 
-            resp.sendRedirect("/login");
+            resp.sendRedirect("login?erro=1");
 
             return;
 
@@ -99,7 +98,7 @@ public class LoginServlet extends HttpServlet {
 
         }
 
-        resp.sendRedirect("/main");
+        resp.sendRedirect("main");
 
     }
 

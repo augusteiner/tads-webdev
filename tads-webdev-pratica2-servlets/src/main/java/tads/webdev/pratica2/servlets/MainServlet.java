@@ -26,7 +26,9 @@ package tads.webdev.pratica2.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,7 +64,9 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
 
-        req.setAttribute("usuario", FachadaLogin.getUsuarioLogado(req));
+        Usuario usuario = FachadaLogin.getUsuarioLogado(req);
+
+        req.setAttribute("usuario", usuario);
 
         req.getRequestDispatcher("main.jsp").forward(req, resp);
 
