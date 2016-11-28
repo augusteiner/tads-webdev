@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>tads.webdev.pratica3.jdbc</groupId>
+  <artifactId>tads-webdev-pratica3</artifactId>
+  <version>0.1.0-RELEASE</version>
+
+  <packaging>war</packaging>
+
+  <name>tads-webdev-pratica3 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <jetty.version>9.3.9.M0</jetty.version>
+
+    <mysql.version>6.0.4</mysql.version>
+
+  </properties>
+
+  <dependencies>
+
+    <!-- Servlet deps -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- MySQL JDBC driver -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>6.0.4</version>
+      <scope>runtime</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>tads-webdev-pratica3</finalName>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>${jetty.version}</version>
+
+        <configuration>
+          <webApp>
+            <contextPath>/pratica3</contextPath>
+          </webApp>
+          <httpConnector>
+            <port>9090</port>
+          </httpConnector>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+</project>

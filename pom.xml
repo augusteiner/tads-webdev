@@ -16,6 +16,7 @@
   <properties>
     <!-- XXX MAVEN_OPTS=-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -->
     <jetty.version>9.3.12.v20160915</jetty.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <modules>
@@ -25,10 +26,11 @@
     <module>tads-webdev-impl-mvc</module>
     <module>tads-webdev-impl-spring</module>
     <module>tads-webdev-feign</module>
-    <module>tads-webdev-pratica-servlets</module>
     <module>tads-webdev-jsp</module>
     <module>tads-webdev-lista2</module>
     <module>tads-webdev-pratica2-servlets</module>
+    <module>tads-webdev-pratica-servlets</module>
+    <module>tads-webdev-pratica3</module>
     <module>tads-webdev-lista3-el</module>
   </modules>
 
