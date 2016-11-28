@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <modelVersion>4.0.0</modelVersion>
-
-  <parent>
-    <artifactId>tads-webdev</artifactId>
-    <groupId>io.tads.webdev</groupId>
-    <version>0.1.0-RELEASE</version>
-  </parent>
 
   <groupId>tads.webdev.impl.spring</groupId>
   <artifactId>tads-webdev-impl-spring</artifactId>
@@ -21,9 +14,15 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
+
+    <jetty.version>9.3.9.M0</jetty.version>
     <spring.version>3.1.0.RELEASE</spring.version>
+
     <cglib.version>2.2.2</cglib.version>
+
   </properties>
 
   <dependencies>

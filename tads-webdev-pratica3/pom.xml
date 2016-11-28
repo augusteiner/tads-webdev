@@ -9,7 +9,7 @@
 
   <packaging>war</packaging>
 
-  <name>tads-webdev-pratica3 Maven Webapp</name>
+  <name>tads-webdev-pratica3</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -55,18 +55,23 @@
     <plugins>
 
       <plugin>
+
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>${jetty.version}</version>
 
         <configuration>
+
           <webApp>
             <contextPath>/pratica3</contextPath>
           </webApp>
+
           <httpConnector>
             <port>9090</port>
           </httpConnector>
+
         </configuration>
+
       </plugin>
 
     </plugins>

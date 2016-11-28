@@ -4,12 +4,6 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>io.tads.webdev</groupId>
-    <artifactId>tads-webdev</artifactId>
-    <version>0.1.0-RELEASE</version>
-  </parent>
-
   <groupId>tads.webdev.pratica2.servlets</groupId>
   <artifactId>tads-webdev-pratica2-servlets</artifactId>
   <version>0.1.0-RELEASE</version>
@@ -18,6 +12,14 @@
 
   <name>tads-webdev-pratica2-servlets</name>
   <url>http://maven.apache.org</url>
+
+  <properties>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <jetty.version>9.3.9.M0</jetty.version>
+
+  </properties>
 
   <dependencies>
 
