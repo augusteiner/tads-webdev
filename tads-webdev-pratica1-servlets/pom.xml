@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>tads.web.pratica.servlets</groupId>
-  <artifactId>tads-webdev-pratica-servlets</artifactId>
+  <artifactId>tads-webdev-pratica1-servlets</artifactId>
 
   <packaging>war</packaging>
 
   <version>0.1.0-RELEASE</version>
 
-  <name>web-pratica-servlets</name>
+  <name>tads-webdev-pratica1-servlets</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -34,7 +34,7 @@
   </dependencies>
 
   <build>
-    <finalName>web-pratica-servlets</finalName>
+    <finalName>tads-webdev-pratica1-servlets</finalName>
 
     <plugins>
       <plugin>
@@ -44,7 +44,6 @@
         <configuration>
           <httpConnector>
             <port>9090</port>
-
           </httpConnector>
         </configuration>
       </plugin>
