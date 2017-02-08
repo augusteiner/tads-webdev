@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>tads.webdev.pratica3.jdbc</groupId>
-  <artifactId>tads-webdev-pratica3</artifactId>
+  <artifactId>tads-webdev-pratica3-jstl</artifactId>
   <version>0.1.0-RELEASE</version>
 
   <packaging>war</packaging>
 
-  <name>tads-webdev-pratica3</name>
+  <name>tads-webdev-pratica3-jstl</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -50,7 +50,7 @@
   </dependencies>
 
   <build>
-    <finalName>tads-webdev-pratica3</finalName>
+    <finalName>tads-webdev-pratica3-jstl</finalName>
 
     <plugins>
 

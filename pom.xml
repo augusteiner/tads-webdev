@@ -31,9 +31,9 @@
     <module>tads-webdev-jsp</module>
     <module>tads-webdev-lista2</module>
     <module>tads-webdev-pratica2-servlets</module>
-    <module>tads-webdev-pratica3</module>
     <module>tads-webdev-lista3-el</module>
     <module>tads-webdev-pratica1-servlets</module>
+    <module>tads-webdev-pratica3-jstl</module>
   </modules>
 
   <build>
