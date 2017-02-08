@@ -23,13 +23,10 @@
  */
 package tads.webdev.jsp.aula1;
 
-import java.io.IOException;
+import java.io.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -42,14 +39,15 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
+        // HttpSession session = req.getSession();
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
         getServletContext().setAttribute("username", null);
 
-        // getServletConfig().getServletContext().setAttribute("username", object);
+        System.out.println(username);
+        System.out.println(password);
 
     }
 
