@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: solid 1px gray;
+}
+
+input[type=text] {
+  width: 100%;
+}
+
+.error-list {
+  color: red;
+  font-weight: bold;
+}
