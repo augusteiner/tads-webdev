@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+  <title></title>
+  <link href="css/main.css" rel="stylesheet" />
+</h:head>
+<h:body>
+  <f:view locale="pt_BR" />
+
+  <div class="pagina">
+    <div class="topo">
+      <ui:insert name="topo">
+        <h4>
+          Locadora FilmeCerto
+        </h4>
+      </ui:insert>
+    </div>
+    <div class="menu">
+      <ui:insert name="menu">
+        <a href="busca.xhtml"> Efetuar Busca </a>
+        <a href="cadastro.xhtml"> Cadastrar Filme </a>
+      </ui:insert>
+    </div>
+    <div class="corpo">
+      <ui:insert name="corpo">
+        Conteúdo da página
+      </ui:insert>
+    </div>
+    <div class="rodape">
+      <ui:insert name="rodape">
+        &copy; José Augusto
+      </ui:insert>
+    </div>
+  </div>
+</h:body>
+
+</html>

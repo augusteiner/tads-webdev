@@ -1,0 +1,64 @@
+
+.topo, .menu, .corpo, .rodape {
+  width: 100%;
+  border: solid 1px #d3d3d3;
+}
+
+.topo {
+  text-align: center;
+}
+
+.menu {
+  text-align: center;
+  height: 20px;
+}
+
+.menu a {
+  border: solid 1px gray;
+  background-color: lightgray;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0 12px;
+}
+
+.corpo {
+  padding: 20px 0;
+}
+
+.rodape {
+  text-align: right;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2px;
+}
+
+table th {
+  background-color: gray;
+  color: white;
+}
+
+tbody tr:nth-child(odd) {
+   background-color: #e2e2e2;
+}
+
+table td, table th {
+  border: solid 1px gray;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+}
+
+.msg-erro {
+  color: red;
+  font-weight: bold;
+}

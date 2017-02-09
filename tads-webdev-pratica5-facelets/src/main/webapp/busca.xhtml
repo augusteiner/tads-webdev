@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+  <title>Busca de Filmes</title>
+</h:head>
+
+<h:body>
+
+  <ui:composition template="./template.xhtml">
+    <ui:define name="corpo">
+
+      <h:form>
+
+        <f:event listener="#{buscaFilmeMB.viewCarregada}" type="preRenderView" />
+
+        <fieldset>
+          <legend>Busca de Filmes</legend>
+
+          <label>
+            Termo para Busca
+          </label>
+          <h:inputText id="termo" value="#{buscaFilmeMB.termo}" valueChangeListener="#{buscaFilmeMB.termoChanged}">
+            <f:ajax event="keyup" render="filmes" execute="termo" />
+          </h:inputText>
+
+        </fieldset>
+
+      </h:form>
+
+      <h:dataTable id="filmes" value="#{buscaFilmeMB.resultado}" var="filme">
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="ID" />
+          </f:facet>
+          #{filme.id}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Título" />
+          </f:facet>
+          #{filme.titulo}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Gênero" />
+          </f:facet>
+          #{filme.genero}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Categoria" />
+          </f:facet>
+          #{filme.categoria}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Preço" />
+          </f:facet>
+          #{filme.preco}
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Duração" />
+          </f:facet>
+          #{filme.duracao}
+        </h:column>
+      </h:dataTable>
+
+    </ui:define>
+  </ui:composition>
+
+</h:body>
+
+</html>

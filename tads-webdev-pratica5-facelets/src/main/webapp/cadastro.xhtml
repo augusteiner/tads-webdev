@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+  <title>Busca de Filmes</title>
+</h:head>
+
+<h:body>
+
+  <ui:composition template="./template.xhtml">
+    <ui:define name="corpo">
+
+      <h:form>
+
+        <fieldset>
+          <legend>Cadastro de Filme</legend>
+
+          <h:inputHidden value="#{filmeMB.filme.id}">
+          </h:inputHidden>
+
+          <div>
+            <label>
+              Título
+            </label>
+            <h:inputText id="titulo" value="#{filmeMB.filme.titulo}" required="true">
+              <f:ajax event="blur" render="msg-titulo" />
+            </h:inputText>
+            <h:message id="msg-titulo" for="titulo" errorClass="msg-erro" />
+          </div>
+
+          <div>
+            <label>
+              Categoria
+            </label>
+            <h:inputText id="categoria" value="#{filmeMB.filme.categoria}" required="true">
+              <f:ajax event="blur" render="msg-categoria" />
+            </h:inputText>
+            <h:message id="msg-categoria" for="categoria" errorClass="msg-erro" />
+          </div>
+
+          <div>
+            <label>
+              Gênero
+            </label>
+            <h:inputText id="genero" value="#{filmeMB.filme.genero}" required="true">
+              <f:ajax event="blur" render="msg-genero" />
+            </h:inputText>
+            <h:message id="msg-genero" for="genero" errorClass="msg-erro" />
+          </div>
+
+          <div>
+            <label>
+              Preço
+            </label>
+            <h:inputText id="preco" value="#{filmeMB.filme.preco}" required="true">
+              <f:convertNumber type="currency" locale="pt_BR" />
+              <f:validateDoubleRange minimum="0.01" />
+              <f:ajax event="blur" render="msg-preco" />
+            </h:inputText>
+            <h:message id="msg-preco" for="preco" errorClass="msg-erro" />
+          </div>
+
+          <div>
+            <label>
+              Duração
+            </label>
+            <h:inputText id="duracao" value="#{filmeMB.filme.duracao}" required="true">
+              <f:convertNumber locale="pt_BR" />
+              <f:validateDoubleRange minimum="0.01" />
+              <f:ajax event="blur" render="msg-duracao" />
+            </h:inputText>
+            <h:message id="msg-duracao" for="duracao" errorClass="msg-erro" />
+          </div>
+
+          <h:commandButton action="#{filmeMB.cadastrar()}" value="Salvar" />
+
+        </fieldset>
+
+      </h:form>
+
+    </ui:define>
+  </ui:composition>
+
+</h:body>
+
+</html>
